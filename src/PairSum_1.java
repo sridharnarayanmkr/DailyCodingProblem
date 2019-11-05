@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 public class PairSum_1 {
@@ -16,6 +18,8 @@ public class PairSum_1 {
         //Another method using Vector or any Collection
         System.out.println(findPairElementSumVector(arr,k));
 
+        //Another method O(n)
+        System.out.println(isPairSumPresent(arr,k));
     }
 
     private static boolean findPairElementSumVector(int[] arr, int k) {
@@ -51,5 +55,17 @@ public class PairSum_1 {
         }
         return false;
 
+    }
+    private static boolean isPairSumPresent(int[] arr, int sum){
+
+        Set visited = new HashSet();
+
+        for (int value : arr) {
+            if (visited.contains(sum - value)) {
+                return true;
+            }
+            visited.add(value);
+        }
+        return false;
     }
 }
